@@ -7,7 +7,7 @@
  <img src="winclean.ico" alt="WinClean Logo" width="100">
   </div>
 
-<h1 align="center">WinClean - winclean.ico The Finest Windows Optimizer</h1>
+<h1 align="center">WinClean - The Finest Windows Optimizer</h1>
 
 <p align="center"><strong>WinClean</strong> is a powerful and user-friendly Windows optimizer designed to enhance your computer's performance and keep it running smoothly. Say goodbye to sluggishness and hello to a faster, more efficient Windows experience!</p>
 
