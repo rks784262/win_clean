@@ -12,6 +12,9 @@ reg export "HKCU\Control Panel\Accessibility" "%temp%\Accessibility_Backup.reg" 
 reg export "HKCU\Control Panel\Keyboard" "%temp%\Keyboard_Backup.reg" /y
 reg export "HKEY_CURRENT_USER\Control Panel\Mouse" "%temp%\Mouse_Backup.reg" /y
 
+:: Determine architecture and set variables accordingly
+set ARCH=%PROCESSOR_ARCHITECTURE%
+
 :: Keyboard and Mouse Settings
 echo Adjusting keyboard and mouse settings...
 :: Commented out to avoid changing system settings
