@@ -35,6 +35,13 @@ echo Skipping cleanup of other directories...
 :: Clean registry keys related to recent files while keeping essential settings
 echo Skipping registry cleanup...
 
+:: Detect the system architecture
+if "%PROCESSOR_ARCHITECTURE%"=="AMD64" (
+    echo This is a 64-bit system.
+) else (
+    echo This is a 32-bit system.
+)
+
 :: Final Message
 echo All optimizations and cleanup completed successfully!
 pause
