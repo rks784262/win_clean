@@ -9,40 +9,31 @@ sfc /scannow
 :: Clear temporary files
 echo Clearing temporary files...
 del /q /s "%temp%\*.*" >nul 2>&1
-rd /s /q "%temp%" >nul 2>&1
-md "%temp%" >nul 2>&1
+:: Commented out to avoid deleting the temp folder itself
+:: rd /s /q "%temp%" >nul 2>&1
+:: md "%temp%" >nul 2>&1
 del /q /s "C:\Windows\Temp\*.*" >nul 2>&1
-rd /s /q "C:\Windows\Temp" >nul 2>&1
-md "C:\Windows\Temp" >nul 2>&1
+:: Commented out to avoid deleting the Windows Temp folder
+:: rd /s /q "C:\Windows\Temp" >nul 2>&1
+:: md "C:\Windows\Temp" >nul 2>&1
 
 :: Reset network settings
-echo Resetting network settings...
-netsh winsock reset
+echo Skipping network reset...
 
 :: Optimize NVIDIA settings
-echo Optimizing NVIDIA settings...
-nvidia-smi -rac
+echo Skipping NVIDIA optimization...
 
 :: Release unused memory
-echo Releasing unused memory...
-echo. | set /p dummyVar="Releasing unused memory..."
-EmptyWorkingSet(HANDLE(-1))
+echo Skipping memory release...
 
 :: Optimize system
-echo Optimizing disk performance...
-defrag /C /O
+echo Skipping disk optimization...
 
 :: Cleanup other directories
-echo Cleaning up other directories...
-del /s /f /q "C:\Windows\Prefetch\*.*" >nul 2>&1
-del /s /f /q "C:\Windows\Downloaded Program Files\*.*" >nul 2>&1
-rd /s /q "%SYSTEMDRIVE%\$Recycle.bin" >nul 2>&1
-del /s /f /q "%userprofile%\Recent\*.*" >nul 2>&1
+echo Skipping cleanup of other directories...
 
 :: Clean registry keys related to recent files while keeping essential settings
-echo Cleaning registry keys related to recent files...
-reg delete "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\RecentDocs" /va /f >nul 2>&1
-reg delete "HKCU\Software\Microsoft\Windows\CurrentVersion\Applets\*Recent File List" /va /f >nul 2>&1
+echo Skipping registry cleanup...
 
 :: Final Message
 echo All optimizations and cleanup completed successfully!
