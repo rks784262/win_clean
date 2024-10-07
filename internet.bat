@@ -34,6 +34,15 @@ echo.
 echo Updated TCP Global Settings:
 netsh int tcp show global
 
+:: Detect the system architecture
+if "%PROCESSOR_ARCHITECTURE%"=="AMD64" (
+    echo.
+    echo This is a 64-bit system.
+) else (
+    echo.
+    echo This is a 32-bit system.
+)
+
 echo.
 echo Internet Booster Completed. Please restart your computer for changes to take effect.
 pause
