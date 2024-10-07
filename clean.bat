@@ -1,4 +1,5 @@
-echo Performing additional optimizations and cleanup...
+Performing additional optimizations and cleanup...
+sfc /scannow
 
 rem Clear temporary files
 del /q /s "%temp%\*.*"
@@ -10,7 +11,6 @@ md "C:\Windows\Temp"
 
 rem Reset network settings and scan system files
 netsh winsock reset
-sfc /scannow
 
 rem Optimize NVIDIA settings
 nvidia-smi -rac
