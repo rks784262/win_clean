@@ -58,4 +58,4 @@ md %temp% >nul 2>&1
 
 :: Final Message
 echo Optimization completed successfully!
-pause
+exit
