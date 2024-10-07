@@ -1,12 +1,16 @@
 @echo off
 :: Clean and Optimize Windows PC
+echo Starting optimization...
+
 :: Backup current registry settings
+echo Backing up registry settings...
 reg export "HKCU\Control Panel\Accessibility" "%temp%\Accessibility_Backup.reg" /y
 reg export "HKCU\Control Panel\Keyboard" "%temp%\Keyboard_Backup.reg" /y
 reg export "HKEY_CURRENT_USER\Control Panel\Mouse" "%temp%\Mouse_Backup.reg" /y
 reg export "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services" "%temp%\Services_Backup.reg" /y
 
 :: Keyboard and Mouse Settings
+echo Adjusting keyboard and mouse settings...
 reg add "HKCU\Control Panel\Accessibility\Keyboard Response" /v "AutoRepeatDelay" /t reg_SZ /d "200" /f
 reg add "HKCU\Control Panel\Accessibility\Keyboard Response" /v "AutoRepeatRate" /t reg_SZ /d "6" /f
 reg add "HKCU\Control Panel\Accessibility\Keyboard Response" /v "BounceTime" /t reg_SZ /d "0" /f
@@ -29,51 +33,60 @@ reg add "HKEY_CURRENT_USER\Control Panel\Mouse" /v "SmoothMouseXCurve" /t reg_BI
 reg add "HKEY_CURRENT_USER\Control Panel\Mouse" /v "SmoothMouseYCurve" /t reg_BINARY /d "0000000000000000fd11010000000000002404000000000000fc12000000000000c0bb0100000000" /f
 
 :: Network Configuration
+echo Configuring network settings...
 ipconfig /all
 ipconfig /flushdns
 ipconfig /release
 ipconfig /renew
 
 :: Disable unnecessary services (set to Disabled)
-reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\xbgm" /v "Start" /t reg_DWORD /d "4" /f
-reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\XboxGipSvc" /v "Start" /t reg_DWORD /d "4" /f
-reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WaaSMedicSvc" /v "Start" /t reg_DWORD /d "4" /f
-reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\W32Time" /v "Start" /t reg_DWORD /d "4" /f
-reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\spectrum" /v "Start" /t reg_DWORD /d "4" /f
-reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\wcncsvc" /v "Start" /t reg_DWORD /d "4" /f
-reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WebClient" /v "Start" /t reg_DWORD /d "4" /f
-reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\SysMain" /v "Start" /t reg_DWORD /d "4" /f
-reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\NcaSvc" /v "Start" /t reg_DWORD /d "4" /f
-reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\diagsvc" /v "Start" /t reg_DWORD /d "4" /f
-reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\UserDataSvc" /v "Start" /t reg_DWORD /d "4" /f
-reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\stisvc" /v "Start" /t reg_DWORD /d "4" /f
-reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\AdobeFlashPlayerUpdateSvc" /v "Start" /t reg_DWORD /d "4" /f
-reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\TrkWks" /v "Start" /t reg_DWORD /d "4" /f
-reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\dmwappushservice" /v "Start" /t reg_DWORD /d "4" /f
-reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\PimIndexMaintenanceSvc" /v "Start" /t reg_DWORD /d "4" /f
-reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\DiagTrack" /v "Start" /t reg_DWORD /d "4" /f
-reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\GoogleChromeElevationService" /v "Start" /t reg_DWORD /d "4" /f
-reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\OneSyncSvc" /v "Start" /t reg_DWORD /d "4" /f
-reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\ibtsiva" /v "Start" /t reg_DWORD /d "4" /f
-reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\SNMPTRAP" /v "Start" /t reg_DWORD /d "4" /f
-reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\pla" /v "Start" /t reg_DWORD /d "4" /f
-reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\ssh-agent" /v "Start" /t reg_DWORD /d "4" /f
-reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\sshd" /v "Start" /t reg_DWORD /d "4" /f
-reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\DoSvc" /v "Start" /t reg_DWORD /d "4" /f
-reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WbioSrvc" /v "Start" /t reg_DWORD /d "4" /f
-reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\PcaSvc" /v "Start" /t reg_DWORD /d "4" /f
-reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\NetTcpPortSharing" /v "Start" /t reg_DWORD /d "4" /f
-reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\wersvc" /v "Start" /t reg_DWORD /d "4" /f
-reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\gupdate" /v "Start" /t reg_DWORD /d "4" /f
-reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\gupdatem" /v "Start" /t reg_DWORD /d "4" /f
-reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\MSiSCSI" /v "Start" /t reg_DWORD /d "4" /f
-reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\SystemEventsBroker" /v "Start" /t reg_DWORD /d "4" /f
-reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\MSDTC" /v "Start" /t reg_DWORD /d "4" /f
-reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\VMCompute" /v "Start" /t reg_DWORD /d "4" /f
-reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\wuauserv" /v "Start" /t reg_DWORD /d "4" /f
-reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WMPNetworkSvc" /v "Start" /t reg_DWORD /d "4" /f
+echo Disabling unnecessary services...
+setlocal enabledelayedexpansion
+for %%s in (
+    xbgm
+    XboxGipSvc
+    WaaSMedicSvc
+    W32Time
+    spectrum
+    wcncsvc
+    WebClient
+    SysMain
+    NcaSvc
+    diagsvc
+    UserDataSvc
+    stisvc
+    AdobeFlashPlayerUpdateSvc
+    TrkWks
+    dmwappushservice
+    PimIndexMaintenanceSvc
+    DiagTrack
+    GoogleChromeElevationService
+    OneSyncSvc
+    ibtsiva
+    SNMPTRAP
+    pla
+    ssh-agent
+    sshd
+    DoSvc
+    WbioSrvc
+    PcaSvc
+    NetTcpPortSharing
+    wersvc
+    gupdate
+    gupdatem
+    MSiSCSI
+    SystemEventsBroker
+    MSDTC
+    VMCompute
+    wuauserv
+    WMPNetworkSvc
+) do (
+    reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\%%s" /v "Start" /t reg_DWORD /d "4" /f
+)
+endlocal
 
 :: Adjust Internet Explorer Security Settings
+echo Adjusting Internet Explorer security settings...
 reg add "HKEY_CURRENT_USER\Software\Microsoft\Internet Explorer\Main" /v "Disable Script Debugging (Internet Explorer)" /t reg_SZ /d "yes" /f
 reg add "HKEY_CURRENT_USER\Software\Microsoft\Internet Explorer\Main" /v "Disable Script Debugging (Other)" /t reg_SZ /d "yes" /f
 reg add "HKEY_CURRENT_USER\Software\Microsoft\Internet Explorer\Main" /v "Error DIALOGS" /t reg_SZ /d "no" /f
@@ -94,51 +107,43 @@ defrag /C /O
 
 echo All optimizations and cleanup complete.
 
-:: Delete unnecessary temp files
-del /s /f /q c:\windows\temp\*.*
-rd /s /q c:\windows\temp
-md c:\windows\temp
-del /s /f /q %temp%\*.*
-rd /s /q %temp%
-md %temp%
-del /s /f /q c:\windows\tempor~1
-del /s /f /q c:\windows\temp
-del /s /f /q c:\windows\tmp
-del /s /f /q c:\windows\ff*.tmp
-del /s /f /q c:\windows\history
-del /s /f /q c:\windows\cookies
-del /s /f /q c:\windows\recent
-del /s /f /q c:\windows\spool\printers
-del /s /f /q %userprofile%\Recent\*.*
-del /s /f /q C:\Windows\Prefetch\*.*
-del /s /f /q C:\Windows\Temp\*.*
-del /s /f /q %USERPROFILE%\appdata\local\temp\*.*
-del /Q C:\Users\%username%\AppData\Local\Microsoft\Windows\INetCache\IE\*.*
-del /Q C:\Windows\Downloaded Program Files\*.*
-rd /s /q %SYSTEMDRIVE%\$Recycle.bin
-del /Q C:\Users\%username%\AppData\Local\Temp\*.*
-del /Q C:\Windows\Temp\*.*
-del /Q C:\Windows\Prefetch\*.*
-del /s /f /q %SystemRoot%\setupapi.log
-del /s /f /q %SystemRoot%\Panther\*
-del /s /f /q %SystemRoot%\inf\setupapi.app.log
-del /s /f /q %SystemRoot%\inf\setupapi.dev.log
-del /s /f /q %SystemRoot%\inf\setupapi.offline.log
+:: Delete unnecessary temp files but do not delete critical files or apps
+echo Cleaning up temporary files...
+del /s /f /q c:\windows\temp\*.* >nul 2>&1
+rd /s /q c:\windows\temp >nul 2>&1
+md c:\windows\temp >nul 2>&1
+del /s /f /q %temp%\*.* >nul 2>&1
+rd /s /q %temp% >nul 2>&1
+md %temp% >nul 2>&1
+del /s /f /q c:\windows\tempor~1 >nul 2>&1
+del /s /f /q c:\windows\temp >nul 2>&1
+del /s /f /q c:\windows\tmp >nul 2>&1
+del /s /f /q c:\windows\ff*.tmp >nul 2>&1
+del /s /f /q c:\windows\history >nul 2>&1
+del /s /f /q c:\windows\cookies >nul 2>&1
+del /s /f /q c:\windows\recent >nul 2>&1
+del /s /f /q c:\windows\spool\printers >nul 2>&1
+del /s /f /q %userprofile%\Recent\*.* >nul 2>&1
+del /s /f /q C:\Windows\Prefetch\*.* >nul 2>&1
+del /s /f /q C:\Windows\Temp\*.* >nul 2>&1
+del /s /f /q %USERPROFILE%\appdata\local\temp\*.* >nul 2>&1
+del /Q C:\Users\%username%\AppData\Local\Microsoft\Windows\INetCache\IE\*.* >nul 2>&1
+del /Q C:\Windows\Downloaded Program Files\*.* >nul 2>&1
+rd /s /q %SYSTEMDRIVE%\$Recycle.bin >nul 2>&1
+del /Q C:\Users\%username%\AppData\Local\Temp\*.* >nul 2>&1
+del /Q C:\Windows\Temp\*.* >nul 2>&1
+del /Q C:\Windows\Prefetch\*.* >nul 2>&1
+del /s /f /q %SystemRoot%\setupapi.log >nul 2>&1
+del /s /f /q %SystemRoot%\Panther\* >nul 2>&1
+del /s /f /q %SystemRoot%\inf\setupapi.app.log >nul 2>&1
+del /s /f /q %SystemRoot%\inf\setupapi.dev.log >nul 2>&1
+del /s /f /q %SystemRoot%\inf\setupapi.offline.log >nul 2>&1
 
-:: Remove User-Specific Registry Entries
+:: Remove User-Specific Registry Entries but keep essential settings
 echo Removing non-essential user-specific registry entries...
-reg delete "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\RecentDocs" /va /f
-reg delete "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\RunMRU" /va /f
-reg delete "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\ComDlg32\OpenSaveMRU" /va /f
-reg delete "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\ComDlg32\LastVisitedPidlMRU" /va /f
-reg delete "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\ComDlg32\LastVisitedPidlMRULegacy" /va /f
-reg delete "HKCU\Software\Microsoft\MediaPlayer\Player\RecentFileList" /va /f
-reg delete "HKCU\Software\Microsoft\MediaPlayer\Player\RecentURLList" /va /f
+reg delete "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\RecentDocs" /va /f >nul 2>&1
+reg delete "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\RunMRU" /va /f >nul 2>&1
 
-:: Restart Windows Explorer to apply changes
-echo Restarting Windows Explorer...
-taskkill /f /im explorer.exe
-start explorer.exe
-
-echo Optimization complete! Please restart your computer for changes to take effect.
+:: Final Message
+echo Optimization completed successfully!
 pause
