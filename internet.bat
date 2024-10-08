@@ -24,7 +24,7 @@ echo.
 echo Setting TCP Auto-Tuning Level to Normal...
 netsh int tcp set global autotuninglevel=normal
 
-rem Set TCP Congestion Provider to CTCP
+rem Set TCP Congestion Provider to CTCP using the supplemental command
 echo.
 echo Setting TCP Congestion Provider to CTCP...
 netsh int tcp set supplemental congestionprovider=ctcp
